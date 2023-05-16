@@ -17,7 +17,7 @@ function App() {
         </a>
       </div>
       <h1>Project2 Application</h1>
-      <h2>This application is in ${import.meta.env.VITE_MODE} Mode</h2>
+      <h2>This application is in {import.meta.env.VITE_MODE} Mode</h2>
       <h3>For more info, please checkout this <a href={import.meta.env.VITE_API_URI}> this backend</a> </h3>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
