@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Room as RoomType } from "../api/roomApi";
+import { RoomType } from "../api/roomApi";
 
 export type Reservation = {
     id: number;

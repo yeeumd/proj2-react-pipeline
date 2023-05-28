@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { RoomType } from "../api/roomApi";
 
 type room = {
   name: string,
@@ -21,12 +22,12 @@ const roomReducer = createSlice({
         filterRooms: (state) => {
             let tempRooms = [...state.rooms];
 
-            if (state.type !== "all") {
-              tempRooms = tempRooms.filter(room => room.type === state.type);
-            }
-            if (state.capacity !== 1) {
-              tempRooms = tempRooms.filter(room => room.capacity >= state.capacity);
-            }
+            // if (state.type !== "all") {
+            //   tempRooms = tempRooms.filter(room => room.type === state.type);
+            // }
+            // if (state.capacity !== 1) {
+            //   tempRooms = tempRooms.filter(room => room.capacity >= state.capacity);
+            // }
             state.sortedRooms = tempRooms;
           },
         set: (state, action) => {

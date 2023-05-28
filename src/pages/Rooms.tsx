@@ -1,4 +1,4 @@
-import { Room as RoomType, useGetAllRoomsQuery } from '../api/roomApi';
+// import { Room as RoomType, useGetAllRoomsQuery } from '../api/roomApi';
 import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
@@ -11,13 +11,13 @@ import RoomsContainer from "../components/RoomsContainer";
 // Then map over the array to display a bunch of Room components
 
 export default function Rooms() {
-  const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();
-console.log(rooms);
+//   const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();
+// console.log(rooms);
   return (
     <>
       <Hero hero="roomsHero">
-        <Banner title="our rooms">
-          <Link to="/" className="btn-primary">
+        <Banner title="our rooms" subtitle="home away from home">
+          <Link to="/home" className="btn-primary">
             return home
           </Link>
         </Banner>
