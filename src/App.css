@@ -512,3 +512,16 @@ h6 {
   }
 }
 /* end of rooms fitler*/
+
+/* custom */
+.container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  /* justify-content: space-between; Add space between items */
+}
+
+.room-details {
+  display: inline-flex;
+  flex-direction: row;
+  margin-right: 30px;
+}

@@ -1,62 +1,34 @@
-import { RoomType, useCreateRoomMutation, useDeleteRoomMutation, useGetAllRoomsQuery} from '../api/roomApi';
-import Loading from './Loading'
-import Error from '../pages/ErrorPage';
-import { useEffect, useState, useRef } from 'react';
+import React from 'react'
+import { RoomType} from '../api/roomApi';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useState } from 'react'
 
-export default function RoomEdit() {
-  const { data: rooms, error, isLoading, refetch }  =  useGetAllRoomsQuery(); 
-  const [createRoom] = useCreateRoomMutation(); 
-  const [deleteRoom] = useDeleteRoomMutation();
-  const typeRef = useRef<HTMLInputElement>(null);
-  const numberRef = useRef<HTMLInputElement>(null);
-
-  if (isLoading) {
-    // return <Loading />
-    <div>Loading...</div>
-  }
-  if (error) {
-    return <Error />
-  }
-  function handleSubmit(event: any) {
-    event.preventDefault();  // to prevent page refreshes
-    const newRoom : RoomType = {
-      // id: 1,
-      roomType: String(typeRef?.current?.value),
-      roomNumber: String(numberRef?.current?.value)
-    }
-    createRoom(newRoom)
-      .unwrap()
-      .then(() => refetch()); // Refetch the stores 
-  }
-
-  function handleDelete(id: number) {
-    deleteRoom(id)
-      .unwrap()
-      .then(() => refetch());
-  }
-
-  return (
-      <>
-        <div>Room Editor section</div>
-        <form onSubmit={handleSubmit}>
-                Name: <input ref={typeRef} />
-                Number: <input ref={numberRef}/>
-                <button>Create Room</button>
-        </form> 
-
-        {rooms?.map(room => {
-              return(
-                <div className='container' key={room.id}>
-                  <h2>{room.roomType}</h2>
-                  <h3>{room.roomNumber}</h3>
-                  <button onClick={() => handleDelete(room.id)}>x</button>
-                </div>)
-      })}
-      </>
-    );
+type RoomProps = {
+    room: RoomType;
+    handleDelete: any; 
+    children: React.ReactNode;
 }
 
-/*
-mui icons
+export const RoomEdit = ({room, handleDelete}: RoomProps) => {
+    const [isEdit, setIsEdit] = useState(false);
+    const [inputType, setInputType] = useState(room.roomType);
 
-*/
+    if (isEdit) {
+        return (
+            <div className='container'>
+                <input value={room.roomType} onChange={e => setInputType(e.target.value)} />
+                <input value={room.roomNumber} />
+                <button onClick={() => setIsEdit(false)}>Cancel Edit</button>
+            </div>
+        )
+    }
+
+    return (
+        <div className='container'>
+            <h2 className='room-details'>{room.roomType}</h2>
+            <h3 className='room-details'>{room.roomNumber}</h3>
+            <button className='room-details' onClick={() => setIsEdit(true)}>Edit</button>
+            <button className='room-details' onClick={() => handleDelete(room.id)}><DeleteIcon />Delete</button>
+        </div>
+    )
+}
