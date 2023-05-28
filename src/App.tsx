@@ -19,7 +19,8 @@ console.log("help")
     <>
       <Navbar />
       <Routes>
-        <Route path = '/' element = {<Home />}></Route>
+        <Route path = '/' element = {<Rooms />}></Route>
+        <Route path = '/home' element = {<Home />}></Route>
        <Route path = '/rooms' element = {<Rooms />}></Route>
        <Route path = '/rooms/:slug' element = {<SingleRoom />}></Route>
        <Route path = "/error" element = {<ErrorPage />}></Route>

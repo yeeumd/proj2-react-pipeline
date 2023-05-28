@@ -1,31 +1,39 @@
-import { Room as RoomType, useGetAllRoomsQuery } from '../api/roomApi';
-import Loading from "./Loading";
-import RoomsFilter from "./RoomsFilter";
+// import { RoomType,useGetAllRoomsQuery } from '../api/roomApi';
+
+// import Loading from "./Loading";
+// import RoomsFilter from "./RoomsFilter";
 import RoomsList from "./RoomsList";
-import Room from './Room';
+// import Room from './Room';
 // import RootState from "../store";
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 // Use RTK Query to fetch the data from the backend here
 // Then map over the array to display a bunch of Room components
 
-export default function Rooms() {
-  const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();
 
-  if (isLoading) {
-    // TODO: Create a loading spinner using MUI
-    return <Loading />
-  }
+
+
+export default function RoomsContainer() {
+  // const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();
+
+
+  // if (isLoading) {
+  //   return <Loading />
+  // }
+
+
 
   return (
     <>
-    <div>room</div>
-      <RoomsFilter rooms={rooms} />
-      {/* <RoomsList rooms={store.sortedRooms} /> */}
-      {rooms?.map(room => {
+      {/* <RoomsFilter rooms={rooms} /> */}
+      {/* <RoomsList rooms={rooms} /> */}
+      <RoomsList />
+      {/* {rooms?.map(room => {
         return (
+          <>
           <Room key={room.id} room={room} />
+          </>
         );
-      })}
+      })} */}
     </>
   )
 }

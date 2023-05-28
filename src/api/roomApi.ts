@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export type Room = {
-    id: number;
-    roomNumber: string;
-    roomType: string;
-    availabilityStatus: string;
+export type RoomType = {
+    id?: number;
+    roomNumber?: string;
+    roomType?: string;
+    price?: number;
+    availabilityStatus?: string;
 }
 
 export const roomApi = createApi({
@@ -12,20 +13,20 @@ export const roomApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/rooms` }),
     // baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/hello` }),
     endpoints: builder => ({
-        getAllRooms: builder.query<Room[], void>({
+        getAllRooms: builder.query<RoomType[], void>({
             query: () => '/'
         }),
-        getRoomById: builder.query<Room, number>({
+        getRoomById: builder.query<RoomType, number>({
             query: id => `/${id}`
         }),
-        createRoom: builder.mutation<Room, Room>({
+        createRoom: builder.mutation<RoomType, RoomType>({
             query: room => ({
                 method: 'POST',
                 url: '/',
                 body: room
             })
         }),
-        updateRoom: builder.mutation<Room, Room>({
+        updateRoom: builder.mutation<RoomType, RoomType>({
             query: room => ({
                 method: 'PUT',
                 url: `/${room.id}`,
