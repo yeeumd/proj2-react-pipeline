@@ -1,25 +1,22 @@
-import { RoomType, useCreateRoomMutation, useGetAllRoomsQuery} from '../api/roomApi';
+import { RoomType, useCreateRoomMutation, useDeleteRoomMutation, useGetAllRoomsQuery} from '../api/roomApi';
 import Loading from './Loading'
 import Error from '../pages/ErrorPage';
-// import { fetchDataStart, selectLoading, selectData, selectError } from './dataSlice';
-// import { useFindAllStoresQuery, Store, useCreateStoreMutation} from "./api/storeApi"
 import { useEffect, useState, useRef } from 'react';
 
 export default function RoomEdit() {
   const { data: rooms, error, isLoading, refetch }  =  useGetAllRoomsQuery(); 
   const [createRoom] = useCreateRoomMutation(); 
+  const [deleteRoom] = useDeleteRoomMutation();
   const typeRef = useRef<HTMLInputElement>(null);
   const numberRef = useRef<HTMLInputElement>(null);
 
-
-
-  // if (isLoading) {
-  //   // return <Loading />
-  //   <div>Loading...</div>
-  // }
-  // if (error) {
-  //   return <Error />
-  // }
+  if (isLoading) {
+    // return <Loading />
+    <div>Loading...</div>
+  }
+  if (error) {
+    return <Error />
+  }
   function handleSubmit(event: any) {
     event.preventDefault();  // to prevent page refreshes
     const newRoom : RoomType = {
@@ -30,6 +27,12 @@ export default function RoomEdit() {
     createRoom(newRoom)
       .unwrap()
       .then(() => refetch()); // Refetch the stores 
+  }
+
+  function handleDelete(id: number) {
+    deleteRoom(id)
+      .unwrap()
+      .then(() => refetch());
   }
 
   return (
@@ -43,11 +46,17 @@ export default function RoomEdit() {
 
         {rooms?.map(room => {
               return(
-                <div key={room.id}>
+                <div className='container' key={room.id}>
                   <h2>{room.roomType}</h2>
                   <h3>{room.roomNumber}</h3>
+                  <button onClick={() => handleDelete(room.id)}>x</button>
                 </div>)
       })}
       </>
     );
 }
+
+/*
+mui icons
+
+*/
