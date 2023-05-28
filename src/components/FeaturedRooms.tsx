@@ -1,11 +1,11 @@
 import { Component } from "react";
 import Title from "./Title";
-import { RoomContext } from "../context/context";
+// import { RoomContext } from "../context/context";
 // import Room from "./Room";
 // import Loading from "./Loading";
 
 export default class FeaturedRooms extends Component {
-  static contextType = RoomContext;
+  // static contextType = RoomCon/text;
 
   render() {
     // let { loading, featuredRooms } = this.context;
