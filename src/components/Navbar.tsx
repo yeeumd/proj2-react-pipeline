@@ -22,12 +22,21 @@ export default class Navbar extends Component {
                 </button>
                     </div>
                     <ul className={this.state.isOpen?"nav-links show-nav":"nav-links"}>
-                    <li>
-                        <Link to="/home">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/rooms">Rooms</Link>
-                    </li>
+                        <li>
+                            <Link to="/home">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/rooms">Rooms</Link>
+                        </li>
+                        <li>
+                            <Link to="/edit">Admin</Link>
+                        </li>
+                        <li className="navbar-nav ms-auto">
+                        <Link to="/home">Register</Link>
+                        </li>
+                        <li>
+                        <Link to="/home">Login</Link>
+                        </li>
                     </ul>
             </div>
 

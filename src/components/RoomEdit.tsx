@@ -1,34 +1,53 @@
-import { RoomType, useCreateRoomMutation, useGetAllRoomsQuery } from '../api/roomApi';
-
-// will move following to new page//
+import { RoomType, useCreateRoomMutation, useGetAllRoomsQuery} from '../api/roomApi';
+import Loading from './Loading'
+import Error from '../pages/ErrorPage';
+// import { fetchDataStart, selectLoading, selectData, selectError } from './dataSlice';
+// import { useFindAllStoresQuery, Store, useCreateStoreMutation} from "./api/storeApi"
 import { useEffect, useState, useRef } from 'react';
-// more above to new page
 
-// move the following to it's own page
-const [createRoom] = useCreateRoomMutation();  //returns a function we can call anything we want
-const typeRef = useRef<HTMLInputElement>(null);
-const numberRef = useRef<HTMLInputElement>(null);
+export default function RoomEdit() {
+  const { data: rooms, error, isLoading, refetch }  =  useGetAllRoomsQuery(); 
+  const [createRoom] = useCreateRoomMutation(); 
+  const typeRef = useRef<HTMLInputElement>(null);
+  const numberRef = useRef<HTMLInputElement>(null);
 
-function handleSubmit(event: any) {
-  event.preventDefault();  // to prevent page refreshes
-  const newRoom : RoomType = {
-    // id: 1,
-    roomType: String(typeRef?.current?.value),
-    roomNumber: String(numberRef?.current?.value)
+
+
+  // if (isLoading) {
+  //   // return <Loading />
+  //   <div>Loading...</div>
+  // }
+  // if (error) {
+  //   return <Error />
+  // }
+  function handleSubmit(event: any) {
+    event.preventDefault();  // to prevent page refreshes
+    const newRoom : RoomType = {
+      // id: 1,
+      roomType: String(typeRef?.current?.value),
+      roomNumber: String(numberRef?.current?.value)
+    }
+    createRoom(newRoom)
+      .unwrap()
+      .then(() => refetch()); // Refetch the stores 
   }
-  createRoom(newRoom);
-    // .unwrap()
-    // .then(() => refetch()); // Refetch the stores 
 
-// move above to new page
+  return (
+      <>
+        <div>Room Editor section</div>
+        <form onSubmit={handleSubmit}>
+                Name: <input ref={typeRef} />
+                Number: <input ref={numberRef}/>
+                <button>Create Room</button>
+        </form> 
 
-return (
-    <>
-    <form onSubmit={handleSubmit}>
-            Name: <input ref={typeRef} />
-            Number: <input ref={numberRef}/>
-            <button>Create Room</button>
-          </form>
-    </>
-  )
-};
+        {rooms?.map(room => {
+              return(
+                <div key={room.id}>
+                  <h2>{room.roomType}</h2>
+                  <h3>{room.roomNumber}</h3>
+                </div>)
+      })}
+      </>
+    );
+}
