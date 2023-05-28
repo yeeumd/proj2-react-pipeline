@@ -1,11 +1,20 @@
 import React from 'react'
-import RoomEdit from '../components/RoomEdit'
+import RoomsEdit from '../components/RoomsEdit'
+import Hero from '../components/Hero'
+import Banner from '../components/Banner'
+import { Link } from 'react-router-dom'
 
 export default function EditData() {
   return (
     <>
-    <div>Room Editing Page</div>
-    <RoomEdit />
+      <Hero hero="roomsHero">
+        <Banner title="our rooms" subtitle="home away from home">
+          <Link to="/home" className="btn-primary">
+            return home
+          </Link>
+        </Banner>
+      </Hero>
+    <RoomsEdit />
     </>
   )
 }
