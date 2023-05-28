@@ -89,10 +89,28 @@
 
 import { RoomType,useGetAllRoomsQuery } from '../api/roomApi';
 import Room from './Room';
+
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchDataStart, selectLoading, selectData, selectError } from './dataSlice';
 // import Loading from "./Loading";
 
 export default function RoomList() {
-  const { data: rooms, error } = useGetAllRoomsQuery();
+
+  // const dispatch = useDispatch();
+  // const loading = useSelector(selectLoading);
+  // const data = useSelector(selectData);
+  // const dispatchError = useSelector(selectError);
+
+  // try {
+    // Dispatch an action to start loading data
+    // dispatch(fetchDataStart());
+    const { data: rooms, error }  =  useGetAllRoomsQuery(); 
+    // dispatch(fetchDataSuccess(fetchedData));
+  // } catch (tryError) {
+    // dispatch(fetchDataFailure(dispatchError));
+    // throw new tryError('Failed to fetch data');
+  // }
+  // const { data: rooms, error } = useGetAllRoomsQuery();
 console.log(error);
 
   return (

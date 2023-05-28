@@ -3,12 +3,6 @@ import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import RoomsContainer from "../components/RoomsContainer";
-// import Room from '../components/Room';
-// import Loading from '../components/Loading';
-
-
-// Use RTK Query to fetch the data from the backend here
-// Then map over the array to display a bunch of Room components
 
 export default function Rooms() {
 //   const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();

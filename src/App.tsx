@@ -1,12 +1,13 @@
 // import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { useGetAllRoomsQuery } from './api/roomApi'
-import './App.css'
-import Home from './pages/Home'
-import Rooms from './pages/Rooms'
-import SingleRoom from './pages/SingleRoom'
-import ErrorPage from './pages/ErrorPage'
-import Navbar from './components/Navbar'
+import './App.css';
+import Home from './pages/Home';
+import Rooms from './pages/Rooms';
+import SingleRoom from './pages/SingleRoom';
+import ErrorPage from './pages/ErrorPage';
+import Navbar from './components/Navbar';
+import EditData from './pages/EditData';
 
 
 function App() {
@@ -24,6 +25,7 @@ console.log("help")
        <Route path = '/rooms' element = {<Rooms />}></Route>
        <Route path = '/rooms/:slug' element = {<SingleRoom />}></Route>
        <Route path = "/error" element = {<ErrorPage />}></Route>
+       <Route path = '/edit' element = {<EditData />}></Route>
        <Route path = "*" element = {<ErrorPage />}></Route>
       </Routes>
     </>
