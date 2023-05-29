@@ -46,7 +46,7 @@ const Registration: React.FC = () => {
       });
 
       if (response.ok) {
-        <RoomsContainer />
+        <Reservations />
         // Successful login
         // Handle the response or redirect to the desired page
       } else {
