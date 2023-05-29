@@ -1,6 +1,9 @@
 import React from 'react'
 
-export default function ReservationEdit() {
+type props = {
+    item: string;
+}
+export default function ReservationEdit(props:props) {
   return (
     <div>ReservationEdit</div>
   )

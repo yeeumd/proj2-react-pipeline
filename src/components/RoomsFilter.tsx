@@ -278,7 +278,7 @@
 // export default ReservationFilter
 
 import React, { useState } from "react";
-import { RoomType, useGetAllRoomsQuery } from '../api/roomApi';
+import { RoomType,useGetAllRoomsQuery } from '../api/roomApi';
 import Loading from './Loading';
 import Error from '../pages/ErrorPage';
 import Title from '../components/Title'
@@ -306,7 +306,7 @@ const RoomFilter: React.FC = () => {
     // return <div>Error Message</div>;
     return <Error />
   }
-
+console.log(rooms);
   const filteredRooms = rooms?.filter((room: RoomType) => {
     // Filter logic based on room type and max price
     if (roomType && maxPrice) {

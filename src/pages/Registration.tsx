@@ -1,9 +1,10 @@
 
 import React, { useState } from 'react';
 import { useNavigate, useParams} from 'react-router-dom';
+import { useGetUserByIdQuery } from '../api/userApi';
 import { Container, Typography, TextField, Button } from '@mui/material';
 import Error from './ErrorPage';
-import Reservations from './Reservations';
+import RoomsContainer from '../components/RoomsContainer';
 
 const login = async (username, password) => {
   const encodedCredentials = btoa(`${username}:${password}`);
@@ -18,7 +19,7 @@ const login = async (username, password) => {
 
   if (response.ok) {
     // Successful login
-    <Reservations />
+    // go to reservations page
     // save the language preference in state
   } else {
     // Failed login
@@ -27,7 +28,7 @@ const login = async (username, password) => {
   }
 };
 
-const Login: React.FC = () => {
+const Registration: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +46,7 @@ const Login: React.FC = () => {
       });
 
       if (response.ok) {
-        <Reservations />
+        <RoomsContainer />
         // Successful login
         // Handle the response or redirect to the desired page
       } else {
@@ -94,4 +95,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Registration;

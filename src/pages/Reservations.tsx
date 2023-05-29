@@ -8,13 +8,13 @@ export default function Reservations() {
   return (
     <>
       <Hero hero="roomsHero">
-        <Banner title="our rooms" subtitle="home away from home">
-          <Link to="/home" className="btn-primary">
-            return home
+        <Banner title="Reservations" subtitle="home away from home">
+          <Link to="/rooms" className="btn-primary">
+            search
           </Link>
         </Banner>
       </Hero>
-    <ReservationsList />
+    {/* <ReservationsList /> */}
     </>
   )
 }

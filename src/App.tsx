@@ -15,10 +15,6 @@ import Reservations from './pages/Reservations';
 
 function App() {
 
-  const { data } = useGetAllRoomsQuery();
-
-  // console.log(data);
-console.log("help " + data)
   return (
     <>
       <Navbar />

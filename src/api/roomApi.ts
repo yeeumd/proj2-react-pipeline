@@ -14,8 +14,8 @@ export const roomApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/rooms` }),
     // baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/hello` }),
     endpoints: builder => ({
-        getAllRooms: builder.query<RoomType[], void>({
-            query: () => '/'
+        getAllRooms: builder.query<RoomType[], number>({
+            query: (page = 1) => `?page=${page}`
         }),
         getRoomById: builder.query<RoomType, number>({
             query: id => `/${id}`

@@ -12,7 +12,7 @@ type RoomProps = {
 export const RoomEdit = ({room, handleDelete}: RoomProps) => {
     const [isEdit, setIsEdit] = useState(false);
     const [inputType, setInputType] = useState(room.roomType);
-
+console.log(room);
     if (isEdit) {
         return (
             <div className='container'>
