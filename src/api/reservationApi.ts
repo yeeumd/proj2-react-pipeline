@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RoomType } from "../api/roomApi";
 
-export type Reservation = {
+export type ReservationType = {
     id: number;
     user: string;
     hotelRoom: RoomType;
@@ -16,20 +16,20 @@ export const reservationApi = createApi({
     // baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/rooms' }),
     baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/reservations` }),
     endpoints: builder => ({
-        getAllReservations: builder.query<Reservation[], void>({
+        getAllReservations: builder.query<ReservationType[], void>({
             query: () => '/'
         }),
-        getReservationById: builder.query<Reservation, number>({
+        getReservationById: builder.query<ReservationType, number>({
             query: id => `/${id}`
         }),
-        createReservation: builder.mutation<Reservation, Reservation>({
+        createReservation: builder.mutation<ReservationType, ReservationType>({
             query: room => ({
                 method: 'POST',
                 url: '/',
                 body: room
             })
         }),
-        updateReservation: builder.mutation<Reservation, Reservation>({
+        updateReservation: builder.mutation<ReservationType, ReservationType>({
             query: room => ({
                 method: 'PUT',
                 url: `/${room.id}`,

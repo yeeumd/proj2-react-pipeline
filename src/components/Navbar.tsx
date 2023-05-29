@@ -2,6 +2,7 @@ import { Component } from 'react'
 import logo from '../images/symranlogo.svg'
 import {FaAlignRight} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import HomeIcon from '@mui/icons-material/Home';
 
 export default class Navbar extends Component {
     state = {
@@ -22,20 +23,17 @@ export default class Navbar extends Component {
                 </button>
                     </div>
                     <ul className={this.state.isOpen?"nav-links show-nav":"nav-links"}>
-                        <li>
-                            <Link to="/home">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/rooms">Rooms</Link>
-                        </li>
-                        <li>
-                            <Link to="/edit">Admin</Link>
-                        </li>
+                    <li>
+                        <Link to="/home"><HomeIcon /></Link>
+                    </li>
+                    <li>
+                        <Link to="/rooms">Rooms</Link>
+                    </li>
                         <li className="navbar-nav ms-auto">
                         <Link to="/home">Register</Link>
                         </li>
                         <li>
-                        <Link to="/home">Login</Link>
+                        <Link to="/login">Login</Link>
                         </li>
                     </ul>
             </div>
