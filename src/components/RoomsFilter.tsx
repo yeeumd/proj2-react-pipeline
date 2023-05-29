@@ -282,9 +282,9 @@ import { RoomType,useGetAllRoomsQuery } from '../api/roomApi';
 import Loading from './Loading';
 import Error from '../pages/ErrorPage';
 import Title from '../components/Title'
-
+const [page, setPage] = useState(1)
 const RoomFilter: React.FC = () => {
-  const { data: rooms, isLoading, error } = useGetAllRoomsQuery();
+  const { data: rooms, isLoading, error } = useGetAllRoomsQuery(page);
   const [roomType, setRoomType] = useState<string | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
 

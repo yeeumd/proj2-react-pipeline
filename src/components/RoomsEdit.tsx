@@ -5,7 +5,8 @@ import { useEffect, useState, useRef } from 'react';
 import { RoomEdit } from './RoomEdit';
 
 export default function RoomsEdit() {
-  const { data: rooms, error, isLoading, refetch }  =  useGetAllRoomsQuery(); 
+  const [page, setPage] = useState(1)
+  const { data: rooms, error, isLoading, refetch }  =  useGetAllRoomsQuery(page); 
   const [createRoom] = useCreateRoomMutation(); 
   const [deleteRoom] = useDeleteRoomMutation();
   const typeRef = useRef<HTMLInputElement>(null);
