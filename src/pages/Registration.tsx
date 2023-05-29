@@ -4,7 +4,7 @@ import { useNavigate, useParams} from 'react-router-dom';
 import { useGetUserByIdQuery } from '../api/userApi';
 import { Container, Typography, TextField, Button } from '@mui/material';
 import Error from './ErrorPage';
-import RoomsContainer from '../components/RoomsContainer';
+import Reservations from './Reservations'
 
 const login = async (username, password) => {
   const encodedCredentials = btoa(`${username}:${password}`);
@@ -19,7 +19,7 @@ const login = async (username, password) => {
 
   if (response.ok) {
     // Successful login
-    // go to reservations page
+    <Reservations />
     // save the language preference in state
   } else {
     // Failed login
