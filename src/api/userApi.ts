@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export type User = {
+export type UserType = {
     id: number;
     name: string;
     email: string;
@@ -15,13 +15,13 @@ export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URI}/users` }),
     endpoints: builder => ({
-        getAllUsers: builder.query<User[], void>({
+        getAllUsers: builder.query<UserType[], void>({
             query: () => '/'
         }),
-        getUserById: builder.query<User, number>({
+        getUserById: builder.query<UserType, number>({
             query: id => `/${id}`
         }),
-        register: builder.mutation<User, User>({
+        register: builder.mutation<UserType, UserType>({
             query: user => ({
                 method: 'POST',
                 url: '/',

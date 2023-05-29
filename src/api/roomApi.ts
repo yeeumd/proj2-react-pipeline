@@ -4,8 +4,9 @@ export type RoomType = {
     id?: number;
     roomNumber?: string;
     roomType?: string;
-    price?: number;
     availabilityStatus?: string;
+    price: number;
+    pictureUrl: string;
 }
 
 export const roomApi = createApi({

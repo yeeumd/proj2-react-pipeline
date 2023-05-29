@@ -10,20 +10,25 @@ export default function RoomsEdit() {
   const [deleteRoom] = useDeleteRoomMutation();
   const typeRef = useRef<HTMLInputElement>(null);
   const numberRef = useRef<HTMLInputElement>(null);
+  const priceRef = useRef<HTMLInputElement>(null);
+  const pictureUrlRef = useRef<HTMLInputElement>(null);
 
   if (isLoading) {
     // return <Loading />
     <div>Loading...</div>
   }
   if (error) {
-    return <Error />
+    return <div>Error Message</div>
   }
   function handleSubmit(event: any) {
     event.preventDefault();  // to prevent page refreshes
     const newRoom : RoomType = {
       // id: 1,
       roomType: String(typeRef?.current?.value),
-      roomNumber: String(numberRef?.current?.value)
+      roomNumber: String(numberRef?.current?.value),
+      price: Number(priceRef?.current?.value),
+      pictureUrl: String(pictureUrlRef?.current?.value)
+
     }
     createRoom(newRoom)
       .unwrap()
@@ -42,6 +47,8 @@ export default function RoomsEdit() {
         <form onSubmit={handleSubmit}>
                 Name: <input ref={typeRef} />
                 Number: <input ref={numberRef}/>
+                Price: <input ref={priceRef} />
+                PictureUrl: <input ref={pictureUrlRef} />
                 <button>Create Room</button>
         </form> 
 

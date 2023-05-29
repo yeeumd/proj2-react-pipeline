@@ -1,11 +1,18 @@
-import Hero from '../components/Hero'
-import Banner from '../components/Banner'
-import {Link} from 'react-router-dom'
+import Hero from '../components/Hero';
+import Banner from '../components/Banner';
+import {Link} from 'react-router-dom';
+import React from 'react';
 
-export default function Error() {
+type ErrorProps = {
+  title?: string;
+  subtitle?: string;
+};
+
+export default function Error(props:ErrorProps){
+  const { title, subtitle } = props;
   return (
     <Hero>
-    <Banner title='404' subtitle="page not found">
+    <Banner title={title} subtitle={subtitle}>
         <Link to="/" className='btn-primary'>
             Return Home
             </Link>
