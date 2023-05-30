@@ -32,6 +32,8 @@ const Registration: React.FC = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phonenumber, setPhonenumber] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -82,6 +84,25 @@ const Registration: React.FC = () => {
           type="password"
           margin="normal"
         />
+        <TextField
+          label="Useremail"
+          variant="outlined"
+          fullWidth
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          margin="normal"
+        />
+        <TextField
+          label="Phonenumber"
+          variant="outlined"
+          fullWidth
+          value={phonenumber}
+          onChange={(e) => setPhonenumber(e.target.value)}
+          type="phonenumber"
+          margin="normal"
+        />
+
         <Button
           variant="contained"
           color="primary"

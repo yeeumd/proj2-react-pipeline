@@ -6,7 +6,7 @@ export type UserType = {
     email: string;
     phoneNumber: string;
     language: string;
-    timezone: Date;
+    timezone: string;
     password: string;
     role: string;
 }

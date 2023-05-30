@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import RoomsContainer from "../components/RoomsContainer";
+import RoomFilter from "../components/RoomsFilter";
 
 export default function Rooms() {
 //   const { data: rooms, refetch, isLoading } = useGetAllRoomsQuery();
@@ -16,7 +17,7 @@ export default function Rooms() {
           </Link>
         </Banner>
       </Hero>
-      <RoomsContainer />
+      <RoomFilter />
     </>
   );
 

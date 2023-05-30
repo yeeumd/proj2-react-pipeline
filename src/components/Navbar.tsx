@@ -30,7 +30,7 @@ export default class Navbar extends Component {
                         <Link to="/rooms">Rooms</Link>
                     </li>
                         <li className="navbar-nav ms-auto">
-                        <Link to="/home">Register</Link>
+                        <Link to="/registration">Register</Link>
                         </li>
                         <li>
                         <Link to="/login">Login</Link>
