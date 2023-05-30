@@ -35,7 +35,8 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     try {
       const encodedCredentials = btoa(`${username}:${password}`);
-      const response = await fetch(`${import.meta.env.VITE_API_URI}/login`, {
+      // const response = await fetch(`${import.meta.env.VITE_API_URI}/login`, {
+        const response = await fetch('http://localhost:8080/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,14 +46,18 @@ const Login: React.FC = () => {
       });
 
       if (response.ok) {
+        console.log("inside");
+
         <Reservations />
         // Successful login
         // Handle the response or redirect to the desired page
       } else {
+        console.log("failed login message");
         // Failed login
         // Handle the error, display an error message, or redirect to an error page
       }
     } catch (error) {
+      console.log("error message");
       // Handle any network or server errors
     }
     

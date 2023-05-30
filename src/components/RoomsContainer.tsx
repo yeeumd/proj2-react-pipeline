@@ -9,7 +9,7 @@ export default function RoomsContainer() {
   return (
     <>
       <RoomsFilter />
-      <RoomsList />
+      {/* <RoomsList /> */}
     </>
   )
 }
