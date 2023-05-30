@@ -146,6 +146,7 @@ type RoomContext = {
   price: 0
 }
 
+
 const RoomContext = React.createContext({} as RoomContext);
 
 export default class RoomProvider extends Component {
