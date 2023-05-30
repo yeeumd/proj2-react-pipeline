@@ -5,12 +5,10 @@ import { useCreateReservationMutation } from '../api/reservationApi'
 import Loading from './Loading';
 import Error from '../pages/ErrorPage';
 import Title from '../components/Title';
-import { DatePicker } from '@mui/lab';
-import { TextField, Button } from '@mui/material';
 import Room from './Room'
 
 const RoomFilter: React.FC = () => {
-  const { data: rooms, isLoading, error } = useGetAllRoomsQuery(1);
+const { data: rooms, isLoading, error } = useGetAllRoomsQuery(1);
   const [roomType, setRoomType] = useState<string | null>(null);
   const [maxPrice, setMaxPrice] = useState<number | null>(null);
   const [page, setPage] = useState(1);
